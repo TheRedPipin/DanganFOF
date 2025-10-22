@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dangan: Friends of Friends</title>
+  <link rel="stylesheet" href="index.css" />
+</head>
+<body>
+  <header>
+    <img src="Assets/DanganFOFLogo.png" alt="Danganronpa: Friends of Friends logo" />
+    <div class="subheader">UNOFFICIAL FAN CREATION</div>
+  </header>
+
+  <main id="contentWrapper">
+    <section id="chapterList"><p>Loading Chapters…</p></section>
+
+    <nav id="extraLinks">
+      <a href="characters.html" class="navLink">View All Characters →</a>
+    </nav>
+  </main>
+
+  <footer>
+    <p>
+      Danganronpa and related characters belong to Spike Chunsoft.  
+      <br />
+      <strong>Danganronpa: Friends of Friends</strong> is an unofficial, non-commercial fan project.
+    </p>
+  </footer>
+
+  <script src="Assets/js/marked.min.js"></script>
+
+  <script>
+    async function loadChapterList() {
+      try {
+        const res = await fetch("Assets/Chapters/index.json");
+        if (!res.ok) throw new Error("Missing index.json");
+        const index = await res.json();
+
+        const list = document.createElement("ol");
+        index.chapters.forEach(ch => {
+          const li = document.createElement("li");
+          const a = document.createElement("a");
+          a.href = `chapter.html?id=${encodeURIComponent(ch.id)}`;
+          a.textContent = `Chapter ${ch.id}. ${ch.title}`;
+          li.appendChild(a);
+          list.appendChild(li);
+        });
+
+        const wrap = document.getElementById("chapterList");
+        wrap.innerHTML = "";
+        wrap.appendChild(list);
+      } catch (err) {
+        document.getElementById("chapterList").innerHTML =
+          "<p>Could not load chapter list.</p>";
+        console.error(err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadChapterList);
+  </script>
+</body>
+</html>

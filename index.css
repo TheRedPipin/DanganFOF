@@ -1,0 +1,105 @@
+:root{
+  --bg: #1e1e1e;
+  --panel: #232323;
+  --ink: #e6e6e6;
+  --muted: #a8a8a8;
+  --line: #2e2e2e;
+  --accent: #ff2496;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.55 system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+header {
+  display: grid;
+  place-items: center;
+  gap: 0.5rem;
+  padding: 1.25rem 0.75rem 1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+header img {
+  max-width: min(900px, 92vw);
+  height: auto;
+  display: block;
+}
+
+.subheader {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  border: 1px solid var(--line);
+  padding: 0.25rem 0.5rem;
+  border-radius: 3px;
+  user-select: none;
+}
+
+
+#contentWrapper {
+  width: min(800px, 92vw);
+  margin: auto;
+}
+
+#chapterList ol {
+    padding: 0;
+    list-style-type: none;
+    display: grid;
+    place-items: center;
+}
+
+#chapterList a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+#chapterList a:visited { color: #c86abf; }
+#chapterList a:hover { text-decoration-thickness: 2px; }
+#chapterList a:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+footer {
+  border-top: 1px solid var(--line);
+  color: var(--muted);
+  text-align: center;
+  padding: 1rem 0.75rem 2rem;
+  font-size: 13px;
+}
+
+@media (max-width: 420px) {
+  .subheader { font-size: 10px; }
+  #chapterList li { margin: 0.35rem 0; }
+}
+
+#extraLinks {
+  margin-top: 2rem;
+  text-align: center;
+}
+
+.navLink,
+.navLink:link,
+.navLink:visited {
+  display: inline-block;
+  color: var(--accent);
+  font-weight: bold;
+  text-decoration: none !important;
+  border: 1px solid var(--line);
+  padding: 0.5rem 1rem;
+  border-radius: 3px;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.navLink:hover,
+.navLink:focus {
+  background: var(--line);
+  border-color: var(--accent);
+  outline: none;
+}

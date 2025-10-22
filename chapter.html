@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chapter: Friends of Friends</title>
+  <link rel="stylesheet" href="chapter.css" />
+</head>
+<body>
+  <header>
+    <a href="index.html" class="backLink">← Return Home</a>
+    <img src="Assets/DanganFOFLogo.png" alt="Danganronpa: Friends of Friends logo" />
+    <div class="subheader">UNOFFICIAL FAN CREATION</div>
+  </header>
+
+  <main id="contentWrapper">
+    <h1 id="chapterTitle">Loading…</h1>
+    <article id="chapterContent">Please wait while the chapter loads.</article>
+    <nav id="pager"></nav>
+  </main>
+
+  <footer>
+    <p>
+      Danganronpa and related characters belong to Spike Chunsoft.  
+      <br />
+      <strong>Danganronpa: Friends of Friends</strong> is an unofficial, non-commercial fan project.
+    </p>
+  </footer>
+
+  <script src="Assets/js/marked.min.js"></script>
+
+  <script>
+    async function loadChapter() {
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id");
+      if (!id) {
+        document.getElementById("chapterTitle").textContent = "Chapter not found.";
+        return;
+      }
+
+      try {
+        const res = await fetch(`Assets/Chapters/${id}.md`);
+        if (!res.ok) throw new Error("Missing chapter file");
+        const md = await res.text();
+        document.getElementById("chapterContent").innerHTML = marked.parse(md);
+
+        const indexRes = await fetch("Assets/Chapters/index.json");
+        const index = await indexRes.json();
+        const chapterData = index.chapters.find(c => String(c.id) === id);
+        document.getElementById("chapterTitle").textContent = chapterData ? chapterData.title : `Chapter ${id}`;
+        document.title = `${chapterData ? chapterData.title : `Chapter ${id}`} — Dangan: Friends of Friends`;
+
+        const currentIndex = index.chapters.findIndex(c => String(c.id) === id);
+        const pager = document.getElementById("pager");
+        let navHtml = "";
+        if (currentIndex > 0) {
+          const prev = index.chapters[currentIndex - 1];
+          navHtml += `<a href="chapter.html?id=${prev.id}" class="navLink">← ${prev.title}</a>`;
+        }
+        if (currentIndex < index.chapters.length - 1) {
+          const next = index.chapters[currentIndex + 1];
+          navHtml += `<a href="chapter.html?id=${next.id}" class="navLink next">${next.title} →</a>`;
+        }
+        pager.innerHTML = navHtml;
+
+      } catch (err) {
+        document.getElementById("chapterContent").innerHTML =
+          "<p>Could not load this chapter.</p>";
+        console.error(err);
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadChapter);
+  </script>
+</body>
+</html>
