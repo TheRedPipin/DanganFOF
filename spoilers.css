@@ -1,0 +1,121 @@
+:root{
+  --bg:#1e1e1e;
+  --ink:#e6e6e6;
+  --muted:#a8a8a8;
+  --line:#2e2e2e;
+  --accent:#ff2496;
+}
+
+*{ box-sizing:border-box; }
+
+html,body{
+  margin:0;
+  padding:0;
+  background:var(--bg);
+  color:var(--ink);
+  font:15px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+}
+
+header{
+  display:grid;
+  place-items:center;
+  gap:.5rem;
+  padding:1rem .75rem;
+  border-bottom:1px solid var(--line);
+  position:relative;
+}
+header img{
+  max-width:min(900px,92vw);
+  height:auto;
+  display:block;
+}
+.subheader{
+  font-size:11px;
+  letter-spacing:.12em;
+  color:var(--muted);
+  border:1px solid var(--line);
+  padding:.25rem .5rem;
+  border-radius:3px;
+  user-select:none;
+}
+.backLink{
+  position:absolute;
+  left:1rem;
+  top:1rem;
+  color:var(--accent);
+  font-weight:bold;
+  text-decoration:none;
+}
+.backLink:hover{ text-decoration:underline; }
+
+#contentWrapper{
+  width:min(800px,92vw);
+  margin:1.5rem auto 2.5rem;
+}
+h1{
+  font-size:1.8rem;
+  margin:.25rem 0 0.75rem;
+}
+.note{
+  color:var(--muted);
+  margin:0 0 1rem;
+}
+
+details.spoiler{
+  border:1px solid var(--line);
+  border-radius:4px;
+  background:#202020;
+}
+details.spoiler > summary{
+  cursor:pointer;
+  padding:.75rem 1rem;
+  font-weight:700;
+  color:var(--accent);
+  outline:none;
+  list-style:none;
+}
+details.spoiler[open] > summary{
+  border-bottom:1px solid var(--line);
+}
+.spoilerBody{
+  padding:1rem;
+}
+
+.flowchart{
+  margin:0;
+  white-space:pre-wrap;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  font-size:14px;
+  line-height:1.5;
+}
+
+.links{
+  margin-top:1.5rem;
+  display:flex;
+  gap:1rem;
+}
+.links a{
+  color:var(--accent);
+  font-weight:bold;
+  text-decoration:none;
+  border:1px solid var(--line);
+  padding:.5rem 1rem;
+  border-radius:3px;
+}
+.links a:hover{
+  background:var(--line);
+  text-decoration:underline;
+}
+
+footer{
+  border-top:1px solid var(--line);
+  color:var(--muted);
+  text-align:center;
+  padding:1rem .75rem 2rem;
+  font-size:13px;
+}
+
+@media (max-width:420px){
+  h1{ font-size:1.5rem; }
+  .subheader{ font-size:10px; }
+}
