@@ -1,10 +1,10 @@
-:root{
-  --bg: #1e1e1e;
-  --panel: #232323;
-  --ink: #e6e6e6;
-  --muted: #a8a8a8;
-  --line: #2e2e2e;
-  --accent: #ff2496;
+:root {
+  --bg: #141418;
+  --panel: #1c1c22;
+  --ink: #f0f0f2;           
+  --muted: #b4b4bd;        
+  --line: #2d2d35;
+  --accent: #ff3fa1;
 }
 
 * { box-sizing: border-box; }
@@ -81,6 +81,7 @@ footer {
 
 #extraLinks {
   margin-top: 2rem;
+  margin-bottom: 2rem;
   text-align: center;
 }
 
