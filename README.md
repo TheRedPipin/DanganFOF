@@ -23,14 +23,14 @@ Everything here is made for storytelling and learning purposes only.
 
 ---
 
-## ⚠️ Disclaimer
+## Disclaimer
 > *Danganronpa: Friends of Friends* is an **unofficial fan creation**.  
 > All rights to the *Danganronpa* franchise belong to **Spike Chunsoft**.  
 > This site makes no profit and is shared purely as a fan-made project created in the United Kingdom.
 
 ---
 
-## 📜 License
+## License
 All original writing and code are released under the  
 [Creative Commons BY-NC-SA 4.0 License](https://creativecommons.org/licenses/by-nc-sa/4.0/).  
 You may share or adapt the work **non-commercially**, provided credit is given and the same licence is used.
